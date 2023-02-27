@@ -1233,10 +1233,10 @@ select {
     color: #1A3353;
 }
 
-.uploader-wrapper-inner img {
+/* .uploader-wrapper-inner img {
     margin-bottom: 10px;
     width: 37px;
-}
+} */
 
 .heading_right_content .theme-btn {
     margin-left: 15px;
