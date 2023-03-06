@@ -41,10 +41,14 @@ const productSlice = createSlice({
     },
     editClicked : (state) => {
       state.action = false
+      state.isGeneral = true;
+    },
+    addProductClicked : (state) => {
+      state.isGeneral = true;
     }
   },
 });
 
-export const { actionActive,generalActive, variationActive, getAllProducts, deleteProduct, editClicked } = productSlice.actions;
+export const { actionActive,generalActive, variationActive, getAllProducts, deleteProduct, editClicked, addProductClicked } = productSlice.actions;
 
 export default productSlice.reducer;

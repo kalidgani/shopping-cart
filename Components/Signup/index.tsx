@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {useForm} from 'react-hook-form'
+import Error from "../Common/error";
 
 function Signup() {
    const route = useRouter()
@@ -10,7 +11,7 @@ function Signup() {
   const {register, watch, handleSubmit, formState : {errors}, reset} = useForm()
 
   const onsubmit = (value : any) => {
-   const userData = JSON.parse(localStorage.getItem('next-user'))
+   const userData = JSON.parse(localStorage.getItem('next-user')!)
    const sortedData = {
      email : value.email,
      password :  value.password
@@ -57,7 +58,7 @@ function Signup() {
                               {...register("email", {required : "this field is required", pattern : {value: /\S+@\S+\.\S+/,
                               message: "please enter valid email"}})}
                             />
-                            <p className="text-danger">{errors.email?.message}</p>
+                           <Error errors={errors?.email} />
                           </div>
                           <div className="mb-4">
                             <label
@@ -84,7 +85,7 @@ function Signup() {
                                  }
                               }})}
                             />
-                            <p className="text-danger">{errors.password?.message}</p>
+                           <Error errors={errors?.password} />
                           </div>
                           <div className="mb-4">
                             <label
@@ -106,7 +107,7 @@ function Signup() {
                                  }
                               }})}
                             />
-                            <p className="text-danger">{errors.confirmPassword?.message}</p>
+                           <Error errors={errors?.confirmPassword} />
                           </div>
                           <div className="mb-0 auth_btn">
                             <button

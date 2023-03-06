@@ -1,4 +1,3 @@
-import Header from "@/Layout/Header";
 import "@/styles/globals.css";
 import "@/assets/css/main.css"
 import type { AppProps } from "next/app";

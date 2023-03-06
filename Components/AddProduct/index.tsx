@@ -1,29 +1,26 @@
-import picture from "@/assets/images/thumbnails/picture.svg";
-import { addProduct, generalActive, variationActive } from "@/Redux/productSlice";
+import { generalActive, variationActive } from "@/Redux/productSlice";
 import { RootState } from "@/Redux/store";
-import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useState } from "react";
-import PreviewImage from "../Common/PreviewImage";
 import { useRouter } from "next/router";
+import { formValue } from "../Common/types";
+import Error from "../Common/error";
+import { PriceError, StockError, VariantError } from "../Common/VariationError";
 
 function AddProduct(props: any) {
   const dispatch = useDispatch();
   const [thumbnail, setThumbnail] = useState([]);
   const router = useRouter()
-  console.log(thumbnail);
   const {product, pathname} = props
 
   const isGeneral = useSelector((state: RootState) => state.product.isGeneral);
-  const productList = useSelector((state: RootState) => state.product.productList);
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
     control,
-    setValue,
   } = useForm({
     defaultValues: {
       id : product?.id,
@@ -43,7 +40,7 @@ function AddProduct(props: any) {
     control,
   });
 
-  const onSubmit =  async (value) => {debugger
+  const onSubmit =  async (value : formValue ) => {debugger
     if(pathname === '/edit-product/[productId]'){
       const response = await fetch(`http://localhost:4000/products/${value.id}`, {
     method : 'PUT',
@@ -189,9 +186,7 @@ function AddProduct(props: any) {
                           required: "this field is required",
                         })}
                       />
-                      <p className="text-danger">
-                        {errors.productName?.message}
-                      </p>
+                     <Error errors={errors?.productName} />
                     </div>
                     <div className="form-group">
                       <label htmlFor="Description">
@@ -205,9 +200,7 @@ function AddProduct(props: any) {
                           required: "this field is required",
                         })}
                       ></textarea>
-                      <p className="text-danger">
-                        {errors.description?.message}
-                      </p>
+                      <Error errors={errors?.description} />
                     </div>
                   </div>
                 </div>
@@ -227,11 +220,10 @@ function AddProduct(props: any) {
                             className="form-control"
                             id="price"
                             {...register("price", {
-                              required: "this field is required",
                               min: 0,
                             })}
                           />
-                          <p className="text-danger">{errors.price?.message}</p>
+                          <Error errors={errors?.price} />
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -247,9 +239,7 @@ function AddProduct(props: any) {
                               min: 0,
                             })}
                           />
-                          <p className="text-danger">
-                            {errors.comparePrice?.message}
-                          </p>
+                          <Error errors={errors?.comparePrice} />
                         </div>
                       </div>
                     </div>
@@ -267,9 +257,7 @@ function AddProduct(props: any) {
                               min: 0,
                             })}
                           />
-                          <p className="text-danger">
-                            {errors.costPerItem?.message}
-                          </p>
+                          <Error errors={errors?.costPerItem} />
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -285,9 +273,7 @@ function AddProduct(props: any) {
                               min: 0,
                             })}
                           />
-                          <p className="text-danger">
-                            {errors.taxRate?.message}
-                          </p>
+                          <Error errors={errors?.taxRate} />
                         </div>
                       </div>
                     </div>
@@ -320,9 +306,7 @@ function AddProduct(props: any) {
                             </option>
                             <option value="mobiles">Mobiles</option>
                           </select>
-                          <p className="text-danger">
-                            {errors.category?.message}
-                          </p>
+                          <Error errors={errors?.category} />
                         </div>
                       </div>
                       <div className="col-md-6">
@@ -340,7 +324,7 @@ function AddProduct(props: any) {
                             <option value="Limited stock">Limited stock</option>
                             <option value="out of stock">out of stock</option>
                           </select>
-                          <p className="text-danger">{errors.status?.message}</p>
+                          <Error errors={errors?.status} />
                         </div>
                       </div>
                     </div>
@@ -381,9 +365,7 @@ function AddProduct(props: any) {
                                       required: "this field is required",
                                     })}
                                   />
-                                  <p className="text-danger">
-                                    {errors.variation?.[i]?.variant?.message}
-                                  </p>
+                                  <VariantError errors={errors?.variation} i={i}/>
                                 </div>
                               </div>
                               <div className="col-md-4">
@@ -400,9 +382,7 @@ function AddProduct(props: any) {
                                       min: 0,
                                     })}
                                   />
-                                  <p className="text-danger">
-                                    {errors.variation?.[i]?.price?.message}
-                                  </p>
+                                 <PriceError errors={errors?.variation} i={i}/>
                                 </div>
                               </div>
                               <div className="col-md-4">
@@ -420,9 +400,7 @@ function AddProduct(props: any) {
                                       min: 0,
                                     })}
                                   />
-                                  <p className="text-danger">
-                                    {errors.variation?.[i]?.stock?.message}
-                                  </p>
+                                  <StockError errors={errors?.variation} i={i}/>
                                 </div>
                               </div>
                             </div>
@@ -430,7 +408,7 @@ function AddProduct(props: any) {
                               <span
                                 className="removeSpan"
                                 onClick={() =>{
-                                let data =  thumbnail.filter((item) => item.index !== i)
+                                let data =  thumbnail.filter((item : any) => item.index !== i)
                                 setThumbnail(data)
                                  remove(i)
                                 } }
@@ -511,7 +489,7 @@ function AddProduct(props: any) {
                         type="button"
                         onClick={() => {
                           append({
-                            name: "",
+                            variant: "",
                             price: "",
                             stock: "",
                             image: "",

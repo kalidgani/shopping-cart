@@ -5,20 +5,23 @@ import Link from "next/link";
 import logo from '@/assets/images/thumbnails/Logo.svg'
 import Image from "next/image";
 import {useForm} from 'react-hook-form';
+import { login } from "../Common/types";
+import Error from "../Common/error";
 
 function Login() {
   const [authError, setAuthError] = useState("");
   const route = useRouter()
 
-  const {register, handleSubmit, formState : {errors}, reset} = useForm()
+  const {register, handleSubmit, formState : {errors}, reset} = useForm<login>()
 
-  const submitHandler = (value) =>{
-        const userData = JSON.parse(localStorage.getItem('next-user'))
-        const validation = userData && userData.findIndex((item) =>{
+  const submitHandler = (value : login) =>{
+        const userData = JSON.parse(localStorage.getItem('next-user')!)
+        const validation = userData && userData.findIndex((item :login) =>{
           return item.email === value.email && item.password === value.password
         })
         if(validation !== null && validation > -1){
           Cookies.set('token', "true")
+          localStorage.setItem('active-user', JSON.stringify(value))
           route.push('/')
         }
         setAuthError(validation === -1 || validation === null ? 'email or password incorrect' : '')
@@ -64,7 +67,7 @@ function Login() {
                                 placeholder="email"
                                 {...register("email", {required : "this field is required"})}
                               />
-                              <p className="text-danger">{errors.email?.message}</p>
+                             <Error errors={errors?.email} />
                             </div>
                             <div className="mb-4">
                               <label
@@ -80,7 +83,7 @@ function Login() {
                                 placeholder="password"
                                 {...register("password", {required : "this field is required"})}
                                 />
-                                <p className="text-danger">{errors.password?.message}</p>
+                                <Error errors={errors?.password} />
                             </div>
                             <p className="text-danger text-center">{authError}</p>
                             <div className="mb-0 auth_btn">

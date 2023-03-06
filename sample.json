@@ -791,66 +791,65 @@
       "id": 31
     },
     {
-      "productName": "watch",
-      "description": "kjnvijdvnjd",
-      "category": "Cloths",
-      "status": "In stock",
-      "variation": [
-        {
-          "variant": "black",
-          "price": "55",
-          "stock": "55",
-          "productImage": {
-            "0": {}
-          }
-        }
-      ],
-      "price": "55",
-      "comparePrice": "55",
-      "costPerItem": "55",
-      "taxRate": "5",
-      "id": 32
-    },
-    {
-      "productName": "Blue ",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle",
-      "category": "cloths",
-      "status": "In stock",
-      "price": "88",
-      "comparePrice": "",
-      "costPerItem": "",
-      "taxRate": "",
-      "variation": [
-        {
-          "variant": "black",
-          "productImage": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dress_Shirt_Fitting_on_dummy_Front.JPG",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "white",
-          "productImage": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dress_Shirt_Fitting_on_dummy_Front.JPG",
-          "price": "30",
-          "stock": "10"
-        }
-      ],
-      "id": "1677304161496"
-    },
-    {
-      "id": "1677304303138",
-      "productName": "cap",
-      "description": "dvkdvmkdvmk",
-      "category": "cloths",
-      "status": "In stock",
-      "price": "44",
+      "id": "1677750551110",
+      "productName": "Nike React",
+      "description": "Running shoes",
+      "category": "shoes",
+      "status": "Limited stock",
+      "price": "",
       "comparePrice": "",
       "costPerItem": "",
       "taxRate": "",
       "variation": [
         {
           "variant": "blue",
-          "price": "55",
-          "stock": "55",
+          "price": "80",
+          "stock": "10",
+          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpOE8CF8ZK0rN-yAfBtwjBKrpYsQcHVtpO_g&usqp=CAU"
+        }
+      ]
+    },
+    {
+      "id": "1677755303916",
+      "productName": "Puma",
+      "description": "Running shoes",
+      "category": "shoes",
+      "status": "Limited stock",
+      "price": "55",
+      "comparePrice": "22",
+      "costPerItem": "22",
+      "taxRate": "17",
+      "variation": [
+        {
+          "variant": "black",
+          "price": "50",
+          "stock": "10",
+          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpOE8CF8ZK0rN-yAfBtwjBKrpYsQcHVtpO_g&usqp=CAU"
+        },
+        {
+          "name": "",
+          "price": "60",
+          "stock": "20",
+          "image": "",
+          "variant": "white"
+        }
+      ]
+    },
+    {
+      "id": "1678102260828",
+      "productName": "T shirt",
+      "description": "casual shirt",
+      "category": "cloths",
+      "status": "Limited stock",
+      "price": "",
+      "comparePrice": "",
+      "costPerItem": "",
+      "taxRate": "",
+      "variation": [
+        {
+          "variant": "blue",
+          "price": "20",
+          "stock": "10",
           "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpOE8CF8ZK0rN-yAfBtwjBKrpYsQcHVtpO_g&usqp=CAU"
         }
       ]

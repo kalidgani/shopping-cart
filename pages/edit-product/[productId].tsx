@@ -1,8 +1,9 @@
 import AddProduct from '@/Components/AddProduct'
+import { product } from '@/Components/Common/types';
 import { useRouter } from 'next/router'
 import React from 'react'
 
-function EditProduct({product}) {
+function EditProduct({product} : product) {
   console.log(product);
   
     const router = useRouter()
