@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import Cookies from "js-cookie";
 import { useEffect, useState } from 'react';
 import { activeUser } from '@/Components/Common/types';
+import { logout } from '@/Redux/authSlice';
 
 function Header() {
    const dispatch = useDispatch()
@@ -15,6 +16,7 @@ function Header() {
    const [user, setUser] = useState<activeUser>()
    const isLogout = useSelector((state: RootState) => state.layout.logout )
    const logoutHandler = () =>{
+    dispatch(logout())
     Cookies.remove('token')
     router.push('/login')
    }

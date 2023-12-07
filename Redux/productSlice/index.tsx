@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { db } from "@/firebase";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { addDoc, collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 
 export interface layout {
@@ -7,6 +9,7 @@ export interface layout {
   isGeneral: boolean;
   productList : any[];
   addData : any;
+  isLoading : boolean
 }
 
 const initialState: layout = {
@@ -14,8 +17,34 @@ const initialState: layout = {
   productId: 0,
   isGeneral: true,
   productList : [],
-  addData : {}
+  addData : {},
+  isLoading : false,
 };
+
+export const productCollectionsRef = collection(db, 'products')
+
+export const addProducts = createAsyncThunk('product/getProduct', async (product : any) =>{      
+      const data = await addDoc(productCollectionsRef, {product})
+      console.log(data);
+      return data.
+      
+      
+})
+
+export const updateProducts = createAsyncThunk('product/updateProduct', async (product : any) =>{  
+  const docRef = doc(db, "products", product.id);  
+  const updatedProduct : any = {
+    product : product.value
+  }
+  const data = await updateDoc(docRef, updatedProduct)
+  console.log(data)
+})
+
+export const deleteProducts = createAsyncThunk('product/deleteProduct', async (id : any) =>{  
+  const docRef = doc(db, "products", id);  
+  const data = await deleteDoc(docRef)
+  console.log(data)
+})
 
 const productSlice = createSlice({
   name: "product",
@@ -46,6 +75,20 @@ const productSlice = createSlice({
     addProductClicked : (state) => {
       state.isGeneral = true;
     }
+  },
+  extraReducers(builder) {
+    builder.addCase(addProducts.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(addProducts.fulfilled, (state, action: any) => {debugger
+      let productList = [...state.productList]
+      productList.push(action.payload)
+      state.productList = productList;
+      state.isLoading = false;
+    });
+    builder.addCase(addProducts.rejected, (state, action: any) => {
+      state.isLoading = false;
+    });
   },
 });
 

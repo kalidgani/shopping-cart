@@ -4,24 +4,28 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import {useForm} from 'react-hook-form'
 import Error from "../Common/error";
+import { useDispatch } from "react-redux";
+import { signup, user } from "@/Redux/authSlice";
 
 function Signup() {
    const route = useRouter()
+   const dispatch = useDispatch()
 
   const {register, watch, handleSubmit, formState : {errors}, reset} = useForm()
 
   const onsubmit = (value : any) => {
-   const userData = JSON.parse(localStorage.getItem('next-user')!)
-   const sortedData = {
+  //  const userData = JSON.parse(localStorage.getItem('next-user')!)
+   const sortedData : user = {
      email : value.email,
      password :  value.password
    }
-   if(userData === null){
-      localStorage.setItem('next-user', JSON.stringify([sortedData]))
-   }else{
-      const data = [...userData, sortedData]
-   localStorage.setItem('next-user', JSON.stringify(data))
-   }
+   dispatch(signup(sortedData))
+  //  if(userData === null){
+  //     localStorage.setItem('next-user', JSON.stringify([sortedData]))
+  //  }else{
+  //     const data = [...userData, sortedData]
+  //  localStorage.setItem('next-user', JSON.stringify(data))
+  //  }
    route.push('/login')
    reset();
   }

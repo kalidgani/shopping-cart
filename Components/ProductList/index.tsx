@@ -2,6 +2,7 @@ import {
   actionActive,
   addProductClicked,
   deleteProduct,
+  deleteProducts,
   editClicked,
   getAllProducts,
 } from "@/Redux/productSlice";
@@ -20,14 +21,16 @@ function ProductList() {
   const productId = useSelector((state: RootState) => state.product.productId);
   const product = useSelector((state: RootState) => state.product.productList);
   const [search,setSearch] = useState('')
+  console.log(product);
+  
 
   const deleteHandler = async (id : number) => {
-    const response = await fetch(`http://localhost:4000/products/${id}`, {
-      method: "DELETE",
-    });
-    const data = await response.json();
+    // const response = await fetch(`http://localhost:4000/products/${id}`, {
+    //   method: "DELETE",
+    // });
+    // const data = await response.json();
+    dispatch(deleteProducts(id))
     dispatch(deleteProduct(id));
-    console.log(response);
   };
 
   const addProductHandler = () => {
@@ -347,19 +350,19 @@ function ProductList() {
                   </tr>
                 </thead>
                 <tbody>
-                  {product &&
+                  {product && 
                     product.map((item) => (
-                      <tr key={item.id}>
+                      <tr key={item.product.id}>
                         <td>
                           <label className="checkbox_container text-uppercase">
-                            {item.id}
+                            {item.product.id}
                           </label>
                         </td>
                         <td>
                           <div className="media align-items-center">
                             <div className="product_thumb">
                               <img
-                                src={item.variation[0].productImage}
+                                src={item.product.variation[0].productImage}
                                 alt="Images"
                                 width={50}
                                 height={50}
@@ -367,27 +370,27 @@ function ProductList() {
                             </div>
                             <div className="media-body product_des">
                               <h6 className="product_name">
-                                {item.productName}
+                                {item.product.productName}
                               </h6>
                             </div>
                           </div>
                         </td>
-                        <td className="text_primary">{item.category}</td>
-                        <td>${item.variation[0].price}</td>
-                        <td>{item.variation[0].stock}</td>
-                        <td>{item.status}</td>
+                        <td className="text_primary">{item.product.category}</td>
+                        <td>${item.product.variation[0].price}</td>
+                        <td>{item.product.variation[0].stock}</td>
+                        <td>{item.product.status}</td>
                         <td className="actions">
                           <div
                             className={`dropdown dropdown_wrapper ${
-                              action && productId === item.id ? "show" : ""
+                              action && productId === item.product.id ? "show" : ""
                             }`}
                           >
                             <button
                               className="dropdown-toggle"
-                              onClick={() => dispatch(actionActive(item.id))}
+                              onClick={() => dispatch(actionActive(item.product.id))}
                               data-toggle="dropdown"
                               aria-expanded={
-                                action && productId === item.id
+                                action && productId === item.product.id
                                   ? "true"
                                   : "false"
                               }
@@ -399,10 +402,10 @@ function ProductList() {
                             </button>
                             <div
                               className={`dropdown-menu dropdown-menu-right ${
-                                action && productId === item.id ? "show" : ""
+                                action && productId === item.product.id ? "show" : ""
                               }`}
                               style={
-                                action && productId === item.id
+                                action && productId === item.product.id
                                   ? {
                                       position: "absolute",
                                       transform:

@@ -1,31 +1,39 @@
 import { useState } from "react";
-import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import logo from '@/assets/images/thumbnails/Logo.svg'
 import Image from "next/image";
 import {useForm} from 'react-hook-form';
-import { login } from "../Common/types";
+import { Login } from "../Common/types";
+import { useDispatch } from "react-redux";
+import { login } from "@/Redux/authSlice";
 import Error from "../Common/error";
+
 
 function Login() {
   const [authError, setAuthError] = useState("");
   const route = useRouter()
+  const dispatch = useDispatch()
 
-  const {register, handleSubmit, formState : {errors}, reset} = useForm<login>()
+  const {register, handleSubmit, formState : {errors}, reset} = useForm<Login>()
 
-  const submitHandler = (value : login) =>{
-        const userData = JSON.parse(localStorage.getItem('next-user')!)
-        const validation = userData && userData.findIndex((item :login) =>{
-          return item.email === value.email && item.password === value.password
-        })
-        if(validation !== null && validation > -1){
-          Cookies.set('token', "true")
-          localStorage.setItem('active-user', JSON.stringify(value))
+  const submitHandler = (value : Login) =>{
+        // const userData = JSON.parse(localStorage.getItem('next-user')!)
+        // const validation = userData && userData.findIndex((item :login) =>{
+        //   return item.email === value.email && item.password === value.password
+        // })
+        // if(validation !== null && validation > -1){
+          
+        // }
+        dispatch(login(value)).then((res : any) =>{
+         if(!res.error){
           route.push('/')
-        }
-        setAuthError(validation === -1 || validation === null ? 'email or password incorrect' : '')
-         reset()
+         }else{
+          setAuthError(res.error.message)
+              reset()
+         }
+        })
+   
   }
 
   return (

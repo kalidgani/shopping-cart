@@ -1,4 +1,4 @@
-import { generalActive, variationActive } from "@/Redux/productSlice";
+import { generalActive, addProducts, variationActive, updateProducts } from "@/Redux/productSlice";
 import { RootState } from "@/Redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -12,7 +12,7 @@ function AddProduct(props: any) {
   const dispatch = useDispatch();
   const [thumbnail, setThumbnail] = useState([]);
   const router = useRouter()
-  const {product, pathname} = props
+  const {product, pathname, id} = props
 
   const isGeneral = useSelector((state: RootState) => state.product.isGeneral);
   const {
@@ -40,26 +40,27 @@ function AddProduct(props: any) {
     control,
   });
 
-  const onSubmit =  async (value : formValue ) => {debugger
+  const onSubmit =  async (value : formValue ) => {
     if(pathname === '/edit-product/[productId]'){
-      const response = await fetch(`http://localhost:4000/products/${value.id}`, {
-    method : 'PUT',
-    body : JSON.stringify(value),
-    headers : {
-      'Content-Type': 'application/json'
-    }
-  })
-  const data = await response.json()
+  //     const response = await fetch(`http://localhost:4000/products/${id}`, {
+  //   method : 'PUT',
+  //   body : JSON.stringify(value),
+  //   headers : {
+  //     'Content-Type': 'application/json'
+  //   }
+  // })
+  dispatch(updateProducts({value,id}))
     }else{
       value.id = new Date().getTime().toString()
-      const response = await fetch('http://localhost:4000/products', {
-      method : 'POST',
-      body : JSON.stringify(value),
-      headers : {
-        'Content-Type': 'application/json'
-      }
-    })
-    const data = await response.json()
+    //   const response = await fetch('http://localhost:4000/products', {
+    //   method : 'POST',
+    //   body : JSON.stringify(value),
+    //   headers : {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    // const data = await response.json()
+    dispatch(addProducts(value))
     }
     reset()
     router.push('/')

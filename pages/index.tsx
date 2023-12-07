@@ -1,11 +1,13 @@
 // eslint-disable-next-line react-hooks/exhaustive-deps
 import { product } from '@/Components/Common/types'
 import ProductList from '@/Components/ProductList'
-import { getAllProducts } from '@/Redux/productSlice'
+import { getAllProducts, productCollectionsRef } from '@/Redux/productSlice'
+import { getDocs } from 'firebase/firestore'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 export default function Home({product} : product) {
+  console.log(product)
   const dispatch = useDispatch()
   useEffect(() =>{
   dispatch(getAllProducts(product))
@@ -20,8 +22,8 @@ export default function Home({product} : product) {
 }
 
 export const getServerSideProps = async () =>{
- const response = await fetch('http://localhost:4000/products?_page=1&_limit=5')
- const data = await response.json()
+ const response = await getDocs(productCollectionsRef)
+ const data = response.docs.map((doc) => ({...doc.data(),id:doc.id}))
 
    return{
     props : {

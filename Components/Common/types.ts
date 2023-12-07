@@ -30,10 +30,11 @@ export type formValue = {
   };
 
   export type product = {
-    product : productList
+    product : productList,
+    id: string
   }
 
- export type login = {
+ export type Login = {
     email : string;
     password : string;
   };

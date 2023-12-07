@@ -10,6 +10,7 @@ function Layout({children} : any) {
   useEffect(() =>{
     const cookie : string | undefined = Cookies.get('token')
     setToken(cookie)
+    
   },[Cookies.get('token')])
 
   return (

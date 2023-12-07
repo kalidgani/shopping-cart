@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "1",
-      "productName": "Jacket",
+      "productName": "Hoodies",
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle",
       "category": "cloths",
       "status": "In stock",
@@ -13,12 +13,6 @@
       "variation": [
         {
           "variant": "black",
-          "productImage": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dress_Shirt_Fitting_on_dummy_Front.JPG",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "white",
           "productImage": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dress_Shirt_Fitting_on_dummy_Front.JPG",
           "price": "30",
           "stock": "10"
@@ -74,114 +68,6 @@
         {
           "variant": "green",
           "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIUfA2o1Y0fQWyw8tyHnfPwZf3PzLyEicNBA&usqp=CAU",
-          "price": "30",
-          "stock": "10"
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "productName": "Analog strip Watch",
-      "category": "accessories",
-      "status": "In stock",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle",
-      "variation": [
-        {
-          "variant": "black",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrAKoRWG1HJLoGn8TzoAkvIP_HkCJTAs_TA&usqp=CAU",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "white",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrAKoRWG1HJLoGn8TzoAkvIP_HkCJTAs_TA&usqp=CAU",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "green",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrAKoRWG1HJLoGn8TzoAkvIP_HkCJTAs_TA&usqp=CAU",
-          "price": "30",
-          "stock": "10"
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "productName": "Women Shirt",
-      "category": "cloths",
-      "status": "Limited stock",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle",
-      "variation": [
-        {
-          "variant": "black",
-          "productImage": "https://img.faballey.com/images/Product/TOP04947Z/1.jpg",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "white",
-          "productImage": "https://img.faballey.com/images/Product/TOP04947Z/1.jpg",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "green",
-          "productImage": "https://img.faballey.com/images/Product/TOP04947Z/1.jpg",
-          "price": "30",
-          "stock": "10"
-        }
-      ]
-    },
-    {
-      "id": "6",
-      "productName": "fan",
-      "category": "electronics",
-      "status": "out of stock",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle",
-      "variation": [
-        {
-          "variant": "black",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwcGgPyiWVBPw1RaD7TptDPJVcMq15eBNnYg&usqp=CAU",
-          "price": "30",
-          "stock": "0"
-        },
-        {
-          "variant": "white",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwcGgPyiWVBPw1RaD7TptDPJVcMq15eBNnYg&usqp=CAU",
-          "price": "30",
-          "stock": "0"
-        },
-        {
-          "variant": "green",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwcGgPyiWVBPw1RaD7TptDPJVcMq15eBNnYg&usqp=CAU",
-          "price": "30",
-          "stock": "0"
-        }
-      ]
-    },
-    {
-      "id": "7",
-      "productName": "Denim Jeans",
-      "category": "cloths",
-      "status": "In stock",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galle",
-      "variation": [
-        {
-          "variant": "black",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRk5MlQAG8njzCbgTRnHpzCchiRibUDnoNbw&usqp=CAU",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "white",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRk5MlQAG8njzCbgTRnHpzCchiRibUDnoNbw&usqp=CAU",
-          "price": "30",
-          "stock": "10"
-        },
-        {
-          "variant": "green",
-          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRk5MlQAG8njzCbgTRnHpzCchiRibUDnoNbw&usqp=CAU",
           "price": "30",
           "stock": "10"
         }
@@ -850,6 +736,25 @@
           "variant": "blue",
           "price": "20",
           "stock": "10",
+          "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpOE8CF8ZK0rN-yAfBtwjBKrpYsQcHVtpO_g&usqp=CAU"
+        }
+      ]
+    },
+    {
+      "id": "1686809536434",
+      "productName": "Jacket",
+      "description": "good",
+      "category": "cloths",
+      "status": "In stock",
+      "price": "20",
+      "comparePrice": "",
+      "costPerItem": "",
+      "taxRate": "",
+      "variation": [
+        {
+          "variant": "black",
+          "price": "12",
+          "stock": "7",
           "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpOE8CF8ZK0rN-yAfBtwjBKrpYsQcHVtpO_g&usqp=CAU"
         }
       ]
